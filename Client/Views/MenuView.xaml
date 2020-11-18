@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="Client.Views.MenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True">
+
+    <UserControl.Resources>
+        <Style x:Key="StartButton" TargetType="Button">
+            <Setter Property="Background" Value="Green"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="Margin" Value="2,2,2,2"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontFamily" Value="Jokerman"/>
+        </Style>
+    </UserControl.Resources>
+
+    <StackPanel Orientation="Vertical">
+        <Button Style ="{StaticResource StartButton}" Content="Start" Command="{Binding Path=StartCommand}"/>
+    </StackPanel>
+
+</UserControl>

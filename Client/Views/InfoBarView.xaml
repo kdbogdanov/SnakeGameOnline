@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Client.Views.InfoBarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True">
+
+    <UserControl.Resources>
+        <Style x:Key="MainInfo" TargetType="TextBlock">
+            <Setter Property="TextAlignment" Value="Justify"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+            <Setter Property="TextWrapping" Value="NoWrap"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+            <Setter Property="Foreground" Value="DarkCyan"/>
+        </Style>
+        <Style TargetType="ListViewItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        </Style>
+        <DataTemplate x:Key="Template">
+            <TextBlock HorizontalAlignment="Center" Text="{Binding}"/>
+        </DataTemplate>
+    </UserControl.Resources>
+
+
+    <StackPanel Orientation="Vertical">
+        <TextBlock Style="{StaticResource MainInfo}" Text="{Binding Path=Nickname, 
+            StringFormat='Player: {0}'}"/>
+        <TextBlock Style="{StaticResource MainInfo}" Text="{Binding Path=Round, 
+            StringFormat='Round: {0}'}"/>
+        <ListView Height="400" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"  ItemsSource="{Binding Players}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn HeaderTemplate="{StaticResource Template}" Width="140" DisplayMemberBinding="{Binding Path=Name}">Name
+                        <!--<Border BorderBrush ="Black" BorderThickness ="0.1">
+                            <Label Focusable="False" HorizontalContentAlignment="Center" Content="{Binding Path=Name}" IsEnabled="False"/>
+                        </Border>-->
+                    </GridViewColumn>
+                    <GridViewColumn HeaderTemplate="{StaticResource Template}" Width="140" DisplayMemberBinding="{Binding Path=Score}">Score
+                        <!--<Border BorderBrush ="Black" BorderThickness ="0.1">
+                            <Label Focusable="False" HorizontalContentAlignment="Center" Content="{Binding Path=Score}" IsEnabled="False"/>
+                        </Border>-->
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </StackPanel>
+
+</UserControl>
